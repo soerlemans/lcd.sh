@@ -25,11 +25,12 @@ function lcd-reg {
     # Check if it is a directory.
     if [[ ! -d "$dir" ]]; then
 	echo "Error: $dir is not a directory." &>2
-	exit 1
+	return 1
     fi
 
     # Create a symbolic link to the directory.
     ln --symbolic "$dir" "${LCD_DIR}/${name}"
+    return 0
 }
 
 # List bookmarks.
